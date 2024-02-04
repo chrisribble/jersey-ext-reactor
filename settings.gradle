@@ -1,0 +1,49 @@
+pluginManagement {
+   repositories {
+      // Prefer mavenCentral over gradlePluginPortal, which redirects to jcenter
+      mavenCentral()
+      gradlePluginPortal()
+   }
+}
+
+plugins {
+    // Apply the foojay-resolver plugin to allow automatic download of JDKs
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.4.0'
+}
+
+dependencyResolutionManagement {
+   versionCatalogs {
+      libs {
+			def jakartaRs = version('jakarta-rs', '3.1.0')
+			def jersey = version('jersey', '3.1.5')
+			def reactor = version('reactor', '3.6.2')
+
+			library('reactor-core', 'io.projectreactor', 'reactor-core').versionRef(reactor)
+			library('jakarta-ws-rs', 'jakarta.ws.rs', 'jakarta.ws.rs-api').versionRef(jakartaRs)
+
+			library('jersey-client', 'org.glassfish.jersey.core', 'jersey-client').versionRef(jersey)
+			library('jersey-server', 'org.glassfish.jersey.core', 'jersey-server').versionRef(jersey)
+			library('jersey-container-servlet', 'org.glassfish.jersey.containers', 'jersey-container-servlet').versionRef(jersey)
+			library('jersey-hk2', 'org.glassfish.jersey.inject', 'jersey-hk2').versionRef(jersey)
+			library('jersey-spring6', 'org.glassfish.jersey.ext', 'jersey-spring6').versionRef(jersey)
+			library('jersey-media-json-jackson', 'org.glassfish.jersey.media', 'jersey-media-json-jackson').versionRef(jersey)
+			library('jersey-bean-validation', 'org.glassfish.jersey.ext', 'jersey-bean-validation').versionRef(jersey)
+			library('jersey-test-framework-provider-grizzly2', 'org.glassfish.jersey.test-framework.providers', 'jersey-test-framework-provider-grizzly2').versionRef(jersey)
+
+			library('junit', 'org.junit.jupiter:junit-jupiter:5.10.0')
+         library('sonar-java-plugin', 'org.sonarsource.java:sonar-java-plugin:7.21.0.31796')
+      }
+   }
+}
+
+rootProject.name = 'jersey-ext-reactor'
+
+Closure discoverSubprojects = {
+  def list = []
+   rootDir.eachDir(){ dir ->
+      dir.eachFileMatch({it == 'build.gradle'}, { list += [dir.name] })
+   }
+   list.toArray(new java.lang.String[0])
+}
+include discoverSubprojects()
+

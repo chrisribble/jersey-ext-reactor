@@ -1,0 +1,54 @@
+plugins {
+	id 'com.github.ben-manes.versions' version '0.48.0'
+   id 'se.solrike.sonarlint' version '1.0.0-beta.15' apply false
+   id 'com.github.spotbugs' version '5.1.3' apply false 
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'java-library'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	apply plugin: 'jacoco'
+	apply plugin: 'maven-publish'
+	apply plugin: "se.solrike.sonarlint"
+
+	group 'com.chrisribble.jersey.ext.reactor'
+	version version
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+
+   dependencies {
+      sonarlintPlugins libs.sonar.java.plugin
+   }
+
+   java {
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
+	}
+
+   gradle.projectsEvaluated {
+      tasks.withType(JavaCompile) { task ->
+         options.compilerArgs.add('-Werror')
+         options.compilerArgs.add('-Xlint:all')
+         options.compilerArgs.add('-Xlint:-processing')
+         options.compilerArgs.add('-Xlint:-preview')
+      }
+      tasks.withType(VerificationTask) { task ->
+         if (task.name.startsWith("spotbugs")) {
+            task.reports {
+               html.required = true
+            }
+         }
+      }
+   }
+
+	eclipse {
+		project {
+			name = "${rootProject.name}-${name}"
+		}
+	}
+}

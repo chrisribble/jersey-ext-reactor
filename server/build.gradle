@@ -1,0 +1,15 @@
+dependencies {
+	 api libs.reactor.core
+	 api libs.jakarta.ws.rs
+	 api libs.jersey.server
+	 api libs.jersey.hk2
+
+	 testImplementation libs.junit
+	 testImplementation libs.jersey.media.json.jackson
+	 testImplementation libs.jersey.bean.validation
+	 testImplementation libs.jersey.test.framework.provider.grizzly2
+}
+
+test {
+	useJUnitPlatform()
+}

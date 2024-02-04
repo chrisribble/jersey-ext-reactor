@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '3.2.2'
+}
+
+ext {
+	springBootVersion = '3.2.2'
+	jacksonVersion = '2.15.3'
+}
+
+dependencies {
+	implementation project(':server')
+
+	implementation libs.jakarta.ws.rs
+	implementation libs.jersey.server
+	implementation libs.jersey.container.servlet
+	implementation libs.jersey.hk2
+	implementation libs.jersey.spring6
+
+   implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+	implementation "org.springframework.boot:spring-boot-starter-undertow"
+   implementation "org.springframework.boot:spring-boot-starter-validation"
+   implementation "org.springframework:spring-web"
+   implementation "org.springframework:spring-webflux"
+
+	implementation platform("com.fasterxml.jackson:jackson-bom:${jacksonVersion}")
+	implementation 'com.fasterxml.jackson.core:jackson-annotations'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	implementation 'com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider'
+	implementation 'com.fasterxml.jackson.module:jackson-module-blackbird'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+	implementation 'io.projectreactor:reactor-core'
+	implementation 'io.projectreactor.netty:reactor-netty-http'
+}
+
+java {
+	sourceCompatibility JavaVersion.VERSION_17
+	targetCompatibility JavaVersion.VERSION_17
+}
+
+test {
+	useJUnitPlatform()
+}
