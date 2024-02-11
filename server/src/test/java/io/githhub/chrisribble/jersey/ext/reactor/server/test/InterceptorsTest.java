@@ -1,4 +1,4 @@
-package com.chrisribble.jersey.ext.reactor.server.test;
+package io.githhub.chrisribble.jersey.ext.reactor.server.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -8,8 +8,7 @@ import java.util.stream.Stream;
 import org.glassfish.jersey.internal.inject.AbstractBinder;
 import org.junit.jupiter.api.Test;
 
-import com.chrisribble.jersey.ext.reactor.server.MonoRequestInterceptor;
-
+import io.github.chrisribble.jersey.ext.reactor.server.MonoRequestInterceptor;
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.GET;

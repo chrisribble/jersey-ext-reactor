@@ -30,7 +30,7 @@ dependencyResolutionManagement {
 			library('jersey-bean-validation', 'org.glassfish.jersey.ext', 'jersey-bean-validation').versionRef(jersey)
 			library('jersey-test-framework-provider-grizzly2', 'org.glassfish.jersey.test-framework.providers', 'jersey-test-framework-provider-grizzly2').versionRef(jersey)
 
-			library('junit', 'org.junit.jupiter:junit-jupiter:5.10.0')
+			library('junit', 'org.junit.jupiter:junit-jupiter:5.10.2')
          library('sonar-java-plugin', 'org.sonarsource.java:sonar-java-plugin:7.21.0.31796')
       }
    }

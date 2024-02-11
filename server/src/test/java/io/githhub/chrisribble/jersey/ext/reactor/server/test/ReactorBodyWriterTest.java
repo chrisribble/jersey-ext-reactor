@@ -1,4 +1,4 @@
-package com.chrisribble.jersey.ext.reactor.server.test;
+package io.githhub.chrisribble.jersey.ext.reactor.server.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -26,10 +26,10 @@ import org.glassfish.jersey.server.ServerBootstrapBag;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.chrisribble.jersey.ext.reactor.server.ReactorBodyWriter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.github.chrisribble.jersey.ext.reactor.server.ReactorBodyWriter;
 import jakarta.inject.Singleton;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.GET;

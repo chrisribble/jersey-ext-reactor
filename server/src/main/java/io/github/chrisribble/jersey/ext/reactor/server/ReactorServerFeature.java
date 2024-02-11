@@ -1,4 +1,4 @@
-package com.chrisribble.jersey.ext.reactor.server;
+package io.github.chrisribble.jersey.ext.reactor.server;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,11 +13,11 @@ import jakarta.ws.rs.core.FeatureContext;
 /**
  * See <a href="https://github.com/chrisribble/jersey-ext-reactor">Github Repository</a>
  */
-public final class ReactorJerseyServerFeature implements Feature {
+public final class ReactorServerFeature implements Feature {
 
 	private final List<Class<? extends MonoRequestInterceptor>> interceptors = new LinkedList<>();
 
-	public ReactorJerseyServerFeature register(final Class<? extends MonoRequestInterceptor> interceptor) {
+	public ReactorServerFeature register(final Class<? extends MonoRequestInterceptor> interceptor) {
 		interceptors.add(interceptor);
 		return this;
 	}

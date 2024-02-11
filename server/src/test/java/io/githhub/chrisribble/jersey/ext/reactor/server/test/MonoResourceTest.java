@@ -1,4 +1,4 @@
-package com.chrisribble.jersey.ext.reactor.server.test;
+package io.githhub.chrisribble.jersey.ext.reactor.server.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

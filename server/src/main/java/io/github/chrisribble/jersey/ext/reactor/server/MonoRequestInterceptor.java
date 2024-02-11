@@ -1,4 +1,4 @@
-package com.chrisribble.jersey.ext.reactor.server;
+package io.github.chrisribble.jersey.ext.reactor.server;
 
 import reactor.core.publisher.Mono;
 

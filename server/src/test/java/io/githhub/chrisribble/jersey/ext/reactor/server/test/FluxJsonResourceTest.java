@@ -1,4 +1,4 @@
-package com.chrisribble.jersey.ext.reactor.server.test;
+package io.githhub.chrisribble.jersey.ext.reactor.server.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -22,9 +22,9 @@ import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
-class MonoJsonResourceTest extends AbstractReactorJerseyTest {
+class FluxJsonResourceTest extends AbstractReactorJerseyTest {
 
 	@Override
 	protected Application configure() {
@@ -33,12 +33,17 @@ class MonoJsonResourceTest extends AbstractReactorJerseyTest {
 
 	@Test
 	void shouldWriteJsonEntities() {
-		Message message = target("json")
+		List<Message> messages = target("json")
 				.path("writeJson")
 				.request(MediaType.APPLICATION_JSON)
-				.get(Message.class);
+				.get(new GenericType<List<Message>>() {});
 
-		assertEquals("hello", message.message);
+		assertNotNull(messages);
+		assertEquals(1, messages.size());
+
+		for (Message message : messages) {
+			assertEquals("hello", message.message);
+		}
 	}
 
 	@Test
@@ -49,31 +54,37 @@ class MonoJsonResourceTest extends AbstractReactorJerseyTest {
 				.get(new GenericType<List<Message>>() {});
 
 		assertNotNull(messages);
-		assertEquals(1, messages.size());
+		assertEquals(2, messages.size());
 
-		Message message = messages.get(0);
-		assertEquals("hello", message.message);
+		for (Message message : messages) {
+			assertEquals("hello", message.message);
+		}
 	}
 
 	@Test
 	void shouldReadJsonEntities() {
-		Message message = target("json")
+		List<Message> messages = target("json")
 				.path("readJson")
 				.request(MediaType.APPLICATION_JSON)
-				.post(Entity.json(new Message("hello")))
-				.readEntity(Message.class);
+				.post(Entity.json(new Message("hello")), new GenericType<List<Message>>() {});
 
-		assertEquals("hello", message.message);
+		assertNotNull(messages);
+		assertEquals(1, messages.size());
+
+		for (Message message : messages) {
+			assertEquals("hello", message.message);
+		}
 	}
 
 	@Test
 	void shouldValidateJsonEntities() {
-		Response response = target("json")
+		try (Response response = target("json")
 				.path("validateJson")
 				.request(MediaType.APPLICATION_JSON)
-				.post(Entity.json(new Message(null)));
+				.post(Entity.json(new Message(null)))) {
 
-		assertEquals(400, response.getStatus());
+			assertEquals(400, response.getStatus());
+		}
 	}
 
 	@Path("/json")
@@ -83,26 +94,26 @@ class MonoJsonResourceTest extends AbstractReactorJerseyTest {
 
 		@GET
 		@Path("writeJson")
-		public Mono<Message> writeJson() {
-			return Mono.just(new Message("hello"));
+		public Flux<Message> writeJson() {
+			return Flux.just(new Message("hello"));
 		}
 
 		@GET
 		@Path("writeJsonList")
-		public Mono<List<Message>> writeJsonList() {
-			return Mono.just(List.of(new Message("hello")));
+		public Flux<Message> writeJsonList() {
+			return Flux.just(new Message("hello"), new Message("hello"));
 		}
 
 		@POST
 		@Path("readJson")
-		public Mono<Message> readJson(@NotNull final Message message) {
-			return Mono.just(message);
+		public Flux<Message> readJson(@NotNull final Message message) {
+			return Flux.just(message);
 		}
 
 		@POST
 		@Path("validateJson")
-		public Mono<Message> validateJson(@Valid final Message message) {
-			return Mono.just(message);
+		public Flux<Message> validateJson(@Valid final Message message) {
+			return Flux.just(message);
 		}
 
 	}

@@ -1,18 +1,18 @@
-package com.chrisribble.jersey.ext.reactor.server.test;
+package io.githhub.chrisribble.jersey.ext.reactor.server.test;
 
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 
-import com.chrisribble.jersey.ext.reactor.server.ReactorJerseyServerFeature;
+import io.github.chrisribble.jersey.ext.reactor.server.ReactorServerFeature;
 
 public abstract class AbstractReactorJerseyTest extends JerseyTest {
 
 	protected ResourceConfig config() {
 		return new ResourceConfig()
 				.register(JacksonFeature.class)
-				.register(ReactorJerseyServerFeature.class);
+				.register(ReactorServerFeature.class);
 	}
 
 	@Override

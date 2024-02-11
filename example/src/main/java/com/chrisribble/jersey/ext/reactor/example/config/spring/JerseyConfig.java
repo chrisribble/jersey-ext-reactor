@@ -5,8 +5,9 @@ import org.glassfish.jersey.server.ServerProperties;
 import org.springframework.context.annotation.Configuration;
 
 import com.chrisribble.jersey.ext.reactor.example.resource.ReactiveResourceExample;
-import com.chrisribble.jersey.ext.reactor.server.ReactorJerseyServerFeature;
 import com.fasterxml.jackson.jakarta.rs.json.JacksonJsonProvider;
+
+import io.github.chrisribble.jersey.ext.reactor.server.ReactorServerFeature;
 
 @Configuration
 public class JerseyConfig extends ResourceConfig {
@@ -16,7 +17,7 @@ public class JerseyConfig extends ResourceConfig {
 
 		// Response providers
 		register(JacksonJsonProvider.class);
-		register(ReactorJerseyServerFeature.class);
+		register(ReactorServerFeature.class);
 
 		// Resources
 		register(ReactiveResourceExample.class);
