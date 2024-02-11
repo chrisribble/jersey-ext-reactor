@@ -20,6 +20,11 @@ import reactor.core.publisher.Mono;
 /**
  * Provides {@link InvocationHandler} for resources returning {@code reactor.core.publisher.*} instances
  * and converts them to {@link Mono}
+ *
+ * @param <T>
+ *            {@link reactor.core.publisher.Mono} type parameter
+ * @param <R>
+ *            Reactor binding type; typically {@link reactor.core.publisher.Mono} or {@link reactor.core.publisher.Flux}
  */
 public abstract class ReactorInvocationHandler<T, R> implements InvocationHandler {
 	private static final Supplier<Mono<Response>> NO_CONTENT_SUPPLIER = () -> Mono.just(Response.noContent().build());
@@ -32,6 +37,11 @@ public abstract class ReactorInvocationHandler<T, R> implements InvocationHandle
 
 	@Inject
 	private IterableProvider<MonoRequestInterceptor> requestInterceptors;
+
+	/**
+	 * protected constructor for javadoc
+	 */
+	protected ReactorInvocationHandler() {}
 
 	@Override
 	@SuppressWarnings("unchecked")

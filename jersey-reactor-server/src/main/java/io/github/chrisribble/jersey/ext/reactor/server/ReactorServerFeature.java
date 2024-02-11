@@ -17,6 +17,20 @@ public final class ReactorServerFeature implements Feature {
 
 	private final List<Class<? extends MonoRequestInterceptor>> interceptors = new LinkedList<>();
 
+	/**
+	 * Create an unconfigured instance
+	 */
+	public ReactorServerFeature() {
+		// not configured yet
+	}
+
+	/**
+	 * Registers an interceptor
+	 *
+	 * @param interceptor
+	 *            to register
+	 * @return configured Feature
+	 */
 	public ReactorServerFeature register(final Class<? extends MonoRequestInterceptor> interceptor) {
 		interceptors.add(interceptor);
 		return this;

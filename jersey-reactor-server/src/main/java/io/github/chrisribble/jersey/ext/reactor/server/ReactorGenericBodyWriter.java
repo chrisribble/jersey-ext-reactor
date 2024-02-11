@@ -33,6 +33,8 @@ public abstract class ReactorGenericBodyWriter implements MessageBodyWriter<Obje
 	private Provider<MessageBodyWorkers> workers;
 
 	/**
+	 * protected constructor which accepts a varargs array of classes to operate on
+	 *
 	 * @param allowedTypes
 	 *            list of types to be processed by this writer
 	 */

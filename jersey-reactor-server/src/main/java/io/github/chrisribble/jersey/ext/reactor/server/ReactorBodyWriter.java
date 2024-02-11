@@ -14,6 +14,9 @@ import reactor.core.publisher.Mono;
 @Singleton
 @Priority(1) //Priority should be higher than JSON providers
 public class ReactorBodyWriter extends ReactorGenericBodyWriter {
+	/**
+	 * Automatically instantiated by Jersey; do not manually invoke
+	 */
 	public ReactorBodyWriter() {
 		super(Flux.class, Mono.class);
 	}

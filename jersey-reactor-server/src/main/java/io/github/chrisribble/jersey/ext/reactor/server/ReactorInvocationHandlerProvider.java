@@ -13,8 +13,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * Provides {@link InvocationHandler} for resources returning {@code io.reactivex.*} instances
- * and converts them to {@link Maybe}
+ * Provides {@link InvocationHandler} for resources returning {@code reactor.core.publisher.*} instances
+ * and converts them to {@link Mono}
  */
 public class ReactorInvocationHandlerProvider implements ResourceMethodInvocationHandlerProvider {
 
@@ -23,6 +23,9 @@ public class ReactorInvocationHandlerProvider implements ResourceMethodInvocatio
 	@Inject
 	private InjectionManager injectionManager;
 
+	/**
+	 * Creates a new handler provider with default reactor type to handler mappings
+	 */
 	public ReactorInvocationHandlerProvider() {
 		handlers = Map.of(
 				Flux.class, FluxHandler.class,

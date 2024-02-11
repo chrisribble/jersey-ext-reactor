@@ -1,0 +1,32 @@
+apply plugin: 'signing'
+apply plugin: 'net.thebugmc.gradle.sonatype-central-portal-publisher'
+
+signing {
+	useGpgCmd()
+	sign configurations.runtimeElements
+}
+
+centralPortal {
+	pom {
+		name = 'Jersey Reactor'
+		description = 'Reactor extension for Jersey'
+		url = 'https://github.com/chrisribble/jersey-ext-reactor'
+		licenses {
+			license {
+				name = 'The MIT License (MIT)'
+				url = 'http://opensource.org/licenses/MIT'
+			}
+		}
+		developers {
+			developer {
+				name = 'Chris Ribble'
+				email = 'chris@chrisribble.com'
+			}
+			scm {
+				connection = 'scm:git:git://github.com/chrisribble/jersey-ext-reactor.git'
+				developerConnection = 'scm:git:ssh://github.com/chrisribble/jersey-ext-reactor.git'
+				url = 'https://github.com/chrisribble/jersey-ext-reactor'
+			}
+		}
+	}
+}

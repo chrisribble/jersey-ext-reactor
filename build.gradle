@@ -2,7 +2,7 @@ plugins {
 	id 'com.github.ben-manes.versions' version '0.51.0'
 	id 'se.solrike.sonarlint' version '1.0.0-beta.15' apply false
 	id 'com.github.spotbugs' version '6.0.7' apply false
-	id 'signing'
+	id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.1.1" apply false
 }
 
 version = '0.0.1'
@@ -13,7 +13,6 @@ subprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 	apply plugin: 'jacoco'
-	apply plugin: 'maven-publish'
 	apply plugin: "se.solrike.sonarlint"
 
 	group 'io.github.chrisribble'
@@ -38,7 +37,7 @@ subprojects {
          options.compilerArgs.add('-Werror')
          options.compilerArgs.add('-Xlint:all')
          options.compilerArgs.add('-Xlint:-processing')
-         options.compilerArgs.add('-Xlint:-preview')
+         options.compilerArgs.add('-Xlint:-this-escape')
       }
       tasks.withType(VerificationTask) { task ->
          if (task.name.startsWith("spotbugs")) {
@@ -48,10 +47,4 @@ subprojects {
          }
       }
    }
-
-	eclipse {
-		project {
-			name = "${rootProject.name}-${name}"
-		}
-	}
 }

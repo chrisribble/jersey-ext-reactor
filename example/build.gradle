@@ -8,7 +8,7 @@ ext {
 }
 
 dependencies {
-	implementation project(':server')
+	implementation project(':jersey-reactor-server')
 
 	implementation libs.jakarta.ws.rs
 	implementation libs.jersey.server
