@@ -1,3 +1,8 @@
+if (!project.hasProperty('sign')) {
+    println 'Signing configuration is missing, skip signing'
+    return
+}
+
 apply plugin: 'signing'
 apply plugin: 'net.thebugmc.gradle.sonatype-central-portal-publisher'
 

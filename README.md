@@ -16,6 +16,20 @@ Heavily inspired by and based on https://github.com/alex-shpak/rx-jersey
 - [ ] Flux resource method streaming support
 - [ ] Client support
 
-
 ## Licence
 [MIT](LICENSE)
+
+## Required Java versions
+* Runtime: Java >= 11
+* Build: Java >= 21
+  * Publish plugin requires Java 21 currently; hopefully this will be fixed soon
+
+## Building
+```
+./gradlew build
+```
+
+## Publishing
+```
+./gradlew publishToCentralPortal -Psign=true
+```
