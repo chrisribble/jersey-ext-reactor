@@ -8,16 +8,11 @@ Heavily inspired by and based on https://github.com/alex-shpak/rx-jersey
 
 ### [Documentation](https://github.com/chrisribble/jersey-ext-reactor)
 
-## Features
-- [x] Mono<T> resource method support
-- [x] Flux<T> resource method support (via Mono<List<T>>)
-
-## Roadmap
-- [ ] Flux resource method streaming support
-- [ ] Client support
-
 ## Licence
 [MIT](LICENSE)
+
+## Introduction
+jersey-ext-reactor is a simple extension for Jersey which makes it possible to return Reactor types (currently `Mono` and `Flux`) directly from your Jersey resource endpoints while preserving asynchronous processing. This allows you to use Reactor without being stuck using Spring Webflux controllers or being resigned to add boilerplate to every resource method to subscribe to the `Mono`/`Flux` and interact with `@Suspended AsyncResponse` explicitly.
 
 ## Required Java versions
 * Runtime: Java >= 11
@@ -33,3 +28,11 @@ Heavily inspired by and based on https://github.com/alex-shpak/rx-jersey
 ```
 ./gradlew publishToCentralPortal -Psign=true
 ```
+
+## Features
+- [x] Mono<T> resource method support
+- [x] Flux<T> resource method support (via Mono<List<T>>)
+
+## Roadmap
+- [ ] Flux resource method streaming support
+- [ ] Client support
