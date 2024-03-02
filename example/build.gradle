@@ -1,10 +1,10 @@
 plugins {
-	id 'org.springframework.boot' version '3.2.2'
+	id 'org.springframework.boot' version '3.2.3'
 }
 
 ext {
-	springBootVersion = '3.2.2'
-	jacksonVersion = '2.15.3'
+	springBootVersion = '3.2.3'
+	jacksonVersion = '2.15.4'
 }
 
 dependencies {
