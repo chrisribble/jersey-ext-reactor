@@ -2,10 +2,11 @@ plugins {
 	id 'com.github.ben-manes.versions' version '0.51.0'
 	id 'se.solrike.sonarlint' version '1.0.0-beta.15' apply false
 	id 'com.github.spotbugs' version '6.0.7' apply false
-	id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.1.1" apply false
+	id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.2" apply false
 }
 
 version = '0.0.1'
+
 
 subprojects {
 	apply plugin: 'java'
@@ -23,28 +24,33 @@ subprojects {
 		mavenCentral()
 	}
 
-   dependencies {
-      sonarlintPlugins libs.sonar.java.plugin
-   }
-
-   java {
-		sourceCompatibility JavaVersion.VERSION_11
-		targetCompatibility JavaVersion.VERSION_11
+	dependencies {
+		sonarlintPlugins libs.sonar.java.plugin
 	}
 
-   gradle.projectsEvaluated {
-      tasks.withType(JavaCompile) { task ->
-         options.compilerArgs.add('-Werror')
-         options.compilerArgs.add('-Xlint:all')
-         options.compilerArgs.add('-Xlint:-processing')
-         options.compilerArgs.add('-Xlint:-this-escape')
-      }
-      tasks.withType(VerificationTask) { task ->
-         if (task.name.startsWith("spotbugs")) {
-            task.reports {
-               html.required = true
-            }
-         }
-      }
-   }
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(17)
+		}
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
+	}
+
+	gradle.projectsEvaluated {
+		tasks.withType(JavaCompile) { task ->
+			options.compilerArgs.add('-Werror')
+			options.compilerArgs.add('-Xlint:all')
+			options.compilerArgs.add('-Xlint:-processing')
+			if (JavaVersion.current() >= JavaVersion.VERSION_21) {
+				options.compilerArgs.add('-Xlint:-this-escape')
+			}
+		}
+		tasks.withType(VerificationTask) { task ->
+			if (task.name.startsWith("spotbugs")) {
+				task.reports {
+					html.required = true
+				}
+			}
+		}
+	}
 }

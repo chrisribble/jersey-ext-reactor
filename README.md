@@ -28,8 +28,7 @@ See example directory for complete demonstration in a Spring Boot 3 application.
 
 ## Required Java versions
 * Runtime: Java >= 11
-* Build: Java >= 21
-  * Publish plugin requires Java 21 currently; hopefully this will be fixed soon
+* Build: Java >= 17
 
 ## Building
 ```
