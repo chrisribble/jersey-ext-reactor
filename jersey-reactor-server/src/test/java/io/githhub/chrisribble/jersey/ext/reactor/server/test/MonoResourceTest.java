@@ -43,6 +43,14 @@ class MonoResourceTest extends AbstractReactorJerseyTest {
 	}
 
 	@Test
+	void shouldNotWrapThrownException() {
+		Invocation.Builder builder = target("mono")
+				.path("exception")
+				.request();
+		assertThrows(BadRequestException.class, () -> builder.get(String.class));
+	}
+
+	@Test
 	void shouldReturnNoContentOnEmptyMono() {
 		final int status = target("mono")
 				.path("empty")
@@ -79,6 +87,12 @@ class MonoResourceTest extends AbstractReactorJerseyTest {
 		@Path("error")
 		public Mono<String> error() {
 			return Mono.error(new BadRequestException());
+		}
+
+		@GET
+		@Path("exception")
+		public Mono<String> exception() {
+			throw new BadRequestException();
 		}
 
 		@GET

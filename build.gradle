@@ -2,10 +2,10 @@ plugins {
 	id 'com.github.ben-manes.versions' version '0.51.0'
 	id 'se.solrike.sonarlint' version '1.0.0-beta.15' apply false
 	id 'com.github.spotbugs' version '6.0.8' apply false
-	id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.2" apply false
+	id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3" apply false
 }
 
-version = '0.0.2'
+version = '0.0.3'
 
 wrapper {
 	gradleVersion = '8.6'

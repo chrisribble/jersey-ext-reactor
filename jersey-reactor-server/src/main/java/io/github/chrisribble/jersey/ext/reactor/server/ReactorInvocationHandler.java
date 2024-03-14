@@ -56,7 +56,12 @@ public abstract class ReactorInvocationHandler<T, R> implements InvocationHandle
 		Mono<R> invoke = Mono.defer(() -> {
 			try {
 				return convert((T) method.invoke(proxy, args));
-			} catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
+			} catch (InvocationTargetException e) {
+				Throwable cause = e.getCause();
+				return cause != null
+						? Mono.error(cause)
+						: Mono.error(e);
+			} catch (IllegalAccessException | IllegalArgumentException e) {
 				return Mono.error(e);
 			}
 		});
