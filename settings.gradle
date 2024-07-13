@@ -8,15 +8,15 @@ pluginManagement {
 
 plugins {
 	 // Apply the foojay-resolver plugin to allow automatic download of JDKs
-	 id 'org.gradle.toolchains.foojay-resolver-convention' version '0.4.0'
+	 id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
 }
 
 dependencyResolutionManagement {
 	versionCatalogs {
 		libs {
 			def jakartaRs = version('jakarta-rs', '3.1.0')
-			def jersey = version('jersey', '3.1.5')
-			def reactor = version('reactor', '3.6.3')
+			def jersey = version('jersey', '3.1.7')
+			def reactor = version('reactor', '3.6.8')
 
 			library('reactor-core', 'io.projectreactor', 'reactor-core').versionRef(reactor)
 			library('jakarta-ws-rs', 'jakarta.ws.rs', 'jakarta.ws.rs-api').versionRef(jakartaRs)
@@ -30,7 +30,7 @@ dependencyResolutionManagement {
 			library('jersey-bean-validation', 'org.glassfish.jersey.ext', 'jersey-bean-validation').versionRef(jersey)
 			library('jersey-test-framework-provider-grizzly2', 'org.glassfish.jersey.test-framework.providers', 'jersey-test-framework-provider-grizzly2').versionRef(jersey)
 
-			library('junit', 'org.junit.jupiter:junit-jupiter:5.10.2')
+			library('junit', 'org.junit.jupiter:junit-jupiter:5.10.3')
 			library('sonar-java-plugin', 'org.sonarsource.java:sonar-java-plugin:7.21.0.31796')
 		}
 	}

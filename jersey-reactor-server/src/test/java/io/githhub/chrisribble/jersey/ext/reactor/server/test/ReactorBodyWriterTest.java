@@ -20,7 +20,6 @@ import org.glassfish.jersey.message.internal.MessageBodyFactory;
 import org.glassfish.jersey.message.internal.MessageBodyFactory.MessageBodyWorkersConfigurator;
 import org.glassfish.jersey.message.internal.MessageBodyProviderNotFoundException;
 import org.glassfish.jersey.message.internal.MessagingBinders;
-import org.glassfish.jersey.message.internal.NullOutputStream;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerBootstrapBag;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,9 +77,9 @@ class ReactorBodyWriterTest {
 	}
 
 	@Test
-	void shouldThrowMessageBodyProviderNotFoundException() throws NoSuchMethodException, IOException {
+	void shouldThrowMessageBodyProviderNotFoundException() {
 		var message = new Message("test");
-		var outputStream = new NullOutputStream();
+		var outputStream = OutputStream.nullOutputStream();
 
 		assertThrows(MessageBodyProviderNotFoundException.class,
 				() -> testWriteTo("xml", MediaType.APPLICATION_XML_TYPE, message, outputStream));
