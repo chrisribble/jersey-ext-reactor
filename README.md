@@ -17,7 +17,7 @@ jersey-ext-reactor is a simple extension for Jersey which makes it possible to r
 ### How to:
 Add the coordinates to your build.gradle file
 ```
-implementation "io.github.chrisribble:jersey-reactor-server:0.0.4"
+implementation "io.github.chrisribble:jersey-reactor-server:0.0.5"
 ```
 Register the feature in your Jersey config:
 ```

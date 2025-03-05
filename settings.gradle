@@ -15,8 +15,8 @@ dependencyResolutionManagement {
 	versionCatalogs {
 		libs {
 			def jakartaRs = version('jakarta-rs', '3.1.0')
-			def jersey = version('jersey', '3.1.7')
-			def reactor = version('reactor', '3.6.8')
+			def jersey = version('jersey', '3.1.10')
+			def reactor = version('reactor', '3.6.14')
 
 			library('reactor-core', 'io.projectreactor', 'reactor-core').versionRef(reactor)
 			library('jakarta-ws-rs', 'jakarta.ws.rs', 'jakarta.ws.rs-api').versionRef(jakartaRs)

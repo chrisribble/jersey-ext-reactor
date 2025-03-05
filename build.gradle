@@ -1,14 +1,14 @@
 plugins {
 	id 'com.github.ben-manes.versions' version '0.51.0'
-	id 'se.solrike.sonarlint' version '1.0.0-beta.15' apply false
-	id 'com.github.spotbugs' version '6.0.19' apply false
+	id 'se.solrike.sonarlint' version '2.2.0' apply false
+	id 'com.github.spotbugs' version '6.1.7' apply false
 	id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3" apply false
 }
 
-version = '0.0.4'
+version = '0.0.5'
 
 wrapper {
-	gradleVersion = '8.9'
+	gradleVersion = '8.13'
 }
 
 subprojects {
@@ -19,8 +19,8 @@ subprojects {
 	apply plugin: 'jacoco'
 	apply plugin: "se.solrike.sonarlint"
 
-	group 'io.github.chrisribble'
-	version rootProject.version
+	group = 'io.github.chrisribble'
+	version = rootProject.version
 
 	repositories {
 		mavenLocal()
