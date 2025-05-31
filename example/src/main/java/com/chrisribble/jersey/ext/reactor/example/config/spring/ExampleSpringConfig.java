@@ -19,14 +19,14 @@ import com.fasterxml.jackson.module.blackbird.BlackbirdModule;
 
 import reactor.netty.http.client.HttpClient;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @ImportAutoConfiguration(value = {
 		ServletWebServerFactoryAutoConfiguration.class,
 		JerseyAutoConfiguration.class,
 		ValidationAutoConfiguration.class,
 })
 @ComponentScan("com.chrisribble.jersey.ext.reactor.example")
-public class ExampleSpringConfig {
+public final class ExampleSpringConfig {
 	@Bean
 	public ObjectMapper getObjectMapper() {
 		ObjectMapper mapper = new ObjectMapper();

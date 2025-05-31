@@ -9,8 +9,8 @@ import com.fasterxml.jackson.jakarta.rs.json.JacksonJsonProvider;
 
 import io.github.chrisribble.jersey.ext.reactor.server.ReactorServerFeature;
 
-@Configuration
-public class JerseyConfig extends ResourceConfig {
+@Configuration(proxyBeanMethods = false)
+public final class JerseyConfig extends ResourceConfig {
 
 	public JerseyConfig() {
 		property(ServerProperties.WADL_FEATURE_DISABLE, true);

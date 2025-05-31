@@ -8,7 +8,7 @@ plugins {
 version = '0.0.5'
 
 wrapper {
-	gradleVersion = '8.13'
+	gradleVersion = '8.14.1'
 }
 
 subprojects {
@@ -41,9 +41,6 @@ subprojects {
 			options.compilerArgs.add('-Werror')
 			options.compilerArgs.add('-Xlint:all')
 			options.compilerArgs.add('-Xlint:-processing')
-			if (JavaVersion.current() >= JavaVersion.VERSION_21) {
-				options.compilerArgs.add('-Xlint:-this-escape')
-			}
 		}
 		tasks.withType(VerificationTask) { task ->
 			if (task.name.startsWith("spotbugs")) {
