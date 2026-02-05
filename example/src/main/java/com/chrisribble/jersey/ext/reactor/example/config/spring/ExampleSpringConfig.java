@@ -1,9 +1,9 @@
 package com.chrisribble.jersey.ext.reactor.example.config.spring;
 
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
-import org.springframework.boot.autoconfigure.jersey.JerseyAutoConfiguration;
-import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;
+import org.springframework.boot.jersey.autoconfigure.JerseyAutoConfiguration;
+import org.springframework.boot.tomcat.autoconfigure.servlet.TomcatServletWebServerAutoConfiguration;
+import org.springframework.boot.validation.autoconfigure.ValidationAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +21,8 @@ import reactor.netty.http.client.HttpClient;
 
 @Configuration(proxyBeanMethods = false)
 @ImportAutoConfiguration(value = {
-		ServletWebServerFactoryAutoConfiguration.class,
 		JerseyAutoConfiguration.class,
+		TomcatServletWebServerAutoConfiguration.class,
 		ValidationAutoConfiguration.class,
 })
 @ComponentScan("com.chrisribble.jersey.ext.reactor.example")

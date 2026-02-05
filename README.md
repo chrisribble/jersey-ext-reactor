@@ -2,7 +2,7 @@
 
 Extension for [Jersey](https://eclipse-ee4j.github.io/jersey/) framework providing support for integrating with Reactor Mono/Flux (for example, instead of using Spring WebFlux).
 
-Uses Jersey 3 async support with `@Suspended` and `AsyncResponse`
+Uses Jersey 4 async support with `@Suspended` and `AsyncResponse`
 
 Heavily inspired by and based on https://github.com/alex-shpak/rx-jersey
 
@@ -17,17 +17,17 @@ jersey-ext-reactor is a simple extension for Jersey which makes it possible to r
 ### How to:
 Add the coordinates to your build.gradle file
 ```
-implementation "io.github.chrisribble:jersey-reactor-server:0.0.5"
+implementation "io.github.chrisribble:jersey-reactor-server:0.0.6"
 ```
 Register the feature in your Jersey config:
 ```
 register(ReactorServerFeature.class);
 ```
-See example directory for complete demonstration in a Spring Boot 3 application.
+See example directory for complete demonstration in a Spring Boot 4 application.
 
 
 ## Required Java versions
-* Runtime: Java >= 11
+* Runtime: Java >= 17
 * Build: Java >= 17
 
 ## Building

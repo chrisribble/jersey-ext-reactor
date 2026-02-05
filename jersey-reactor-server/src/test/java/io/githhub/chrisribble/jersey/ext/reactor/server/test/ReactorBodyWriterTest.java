@@ -11,10 +11,10 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
+import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.inject.hk2.Hk2InjectionManagerFactory;
 import org.glassfish.jersey.internal.BootstrapBag;
 import org.glassfish.jersey.internal.MapPropertiesDelegate;
-import org.glassfish.jersey.internal.inject.AbstractBinder;
 import org.glassfish.jersey.internal.inject.InjectionManager;
 import org.glassfish.jersey.message.internal.MessageBodyFactory;
 import org.glassfish.jersey.message.internal.MessageBodyFactory.MessageBodyWorkersConfigurator;
@@ -45,7 +45,7 @@ class ReactorBodyWriterTest {
 	private InjectionManager injectionManager;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		injectionManager = new Hk2InjectionManagerFactory().create();
 		injectionManager.register(
 				new MessagingBinders.MessageBodyProviders(null, null));

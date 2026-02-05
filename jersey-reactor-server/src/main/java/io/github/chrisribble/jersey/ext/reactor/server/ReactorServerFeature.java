@@ -3,7 +3,7 @@ package io.github.chrisribble.jersey.ext.reactor.server;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.glassfish.jersey.internal.inject.AbstractBinder;
+import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.server.spi.internal.ResourceMethodInvocationHandlerProvider;
 
 import jakarta.inject.Singleton;

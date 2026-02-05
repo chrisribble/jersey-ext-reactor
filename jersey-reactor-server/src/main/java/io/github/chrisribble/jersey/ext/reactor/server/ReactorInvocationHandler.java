@@ -78,8 +78,8 @@ public abstract class ReactorInvocationHandler<T, R> implements InvocationHandle
 	}
 
 	private Response getResponse(final Object result) {
-		if (result instanceof Response) {
-			return (Response) result;
+		if (result instanceof Response response) {
+			return response;
 		}
 		return Response.ok(result).build();
 	}

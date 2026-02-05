@@ -1,14 +1,14 @@
 plugins {
-	id 'com.github.ben-manes.versions' version '0.51.0'
+	id 'com.github.ben-manes.versions' version '0.53.0'
 	id 'se.solrike.sonarlint' version '2.2.0' apply false
-	id 'com.github.spotbugs' version '6.1.7' apply false
-	id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3" apply false
+	id 'com.github.spotbugs' version '6.4.8' apply false
+	id "net.thebugmc.gradle.sonatype-central-portal-publisher" version "1.2.4" apply false
 }
 
-version = '0.0.5'
+version = '0.0.6'
 
 wrapper {
-	gradleVersion = '8.14.1'
+	gradleVersion = '9.3'
 }
 
 subprojects {
@@ -32,8 +32,8 @@ subprojects {
 	}
 
 	java {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
 	}
 
 	gradle.projectsEvaluated {

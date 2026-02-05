@@ -1,19 +1,29 @@
 apply from: "${rootDir}/maven-central.gradle"
+//apply from: "${rootDir}/local-publish.gradle"
 
 dependencies {
-	 api libs.reactor.core
-	 api libs.jakarta.ws.rs
-	 api libs.jersey.server
-	 api libs.jersey.hk2
+	api libs.reactor.core
+	api libs.jakarta.ws.rs
+	api libs.jersey.server
+	api libs.jersey.hk2
 
-	 testImplementation libs.junit
-	 testImplementation libs.jersey.media.json.jackson
-	 testImplementation libs.jersey.bean.validation
-	 testImplementation libs.jersey.test.framework.provider.grizzly2
+	testImplementation libs.junit
+	testImplementation libs.jersey.media.json.jackson
+	testImplementation libs.jersey.bean.validation
+	testImplementation libs.jersey.test.framework.provider.grizzly2
+
+	testRuntimeOnly libs.junit.platform.launcher
 }
 
 test {
 	useJUnitPlatform()
+}
+
+sonarlint {
+	ignoreFailures = false
+	excludeRules = [
+		'java:S6813', // field injection
+	]
 }
 
 jar {
