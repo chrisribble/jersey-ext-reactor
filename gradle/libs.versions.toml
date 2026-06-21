@@ -1,0 +1,20 @@
+[versions]
+jakartaRs = "4.0.0"
+jersey = "4.0.2"
+reactor = "3.8.2"
+
+[libraries]
+reactor-core = { group = "io.projectreactor", name = "reactor-core", version.ref = "reactor" }
+jakarta-ws-rs = { group = "jakarta.ws.rs", name= "jakarta.ws.rs-api", version.ref = "jakartaRs" }
+jersey-client = { group = "org.glassfish.jersey.core", name = "jersey-client", version.ref = "jersey" }
+jersey-server = { group = "org.glassfish.jersey.core", name = "jersey-server", version.ref = "jersey" }
+jersey-container-servlet = { group = "org.glassfish.jersey.containers", name = "jersey-container-servlet", version.ref = "jersey" }
+jersey-hk2 = { group = "org.glassfish.jersey.inject", name = "jersey-hk2", version.ref = "jersey" }
+jersey-spring6 = { group = "org.glassfish.jersey.ext", name = "jersey-spring6", version.ref = "jersey" }
+jersey-media-json-jackson = { group = "org.glassfish.jersey.media", name = "jersey-media-json-jackson", version.ref = "jersey" }
+jersey-bean-validation = { group = "org.glassfish.jersey.ext", name = "jersey-bean-validation", version.ref = "jersey" }
+jersey-test-framework-provider-grizzly2 = { group = "org.glassfish.jersey.test-framework.providers", name = "jersey-test-framework-provider-grizzly2", version.ref = "jersey" }
+
+junit = { module = "org.junit.jupiter:junit-jupiter", version = "5.14.2" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version = "1.14.2" }
+sonar-java-plugin = { module = "org.sonarsource.java:sonar-java-plugin", version = "8.9.4.40912" }

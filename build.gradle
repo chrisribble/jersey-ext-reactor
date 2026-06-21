@@ -1,14 +1,14 @@
 plugins {
-	id 'com.github.ben-manes.versions' version '0.53.0'
+	id 'com.github.ben-manes.versions' version '0.54.0'
 	id 'se.solrike.sonarlint' version '2.2.0' apply false
-	id 'com.github.spotbugs' version '6.4.8' apply false
+	id 'com.github.spotbugs' version '6.5.8' apply false
 	id "net.thebugmc.gradle.sonatype-central-portal-publisher" version "1.2.4" apply false
 }
 
 version = '0.0.6'
 
 wrapper {
-	gradleVersion = '9.3'
+	gradleVersion = '9.6'
 }
 
 subprojects {
